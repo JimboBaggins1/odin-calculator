@@ -78,11 +78,23 @@ const populateDisplay = function (keys) {
 
 // Look for key press
 window.addEventListener("keydown", function (e) {
-  const keys = document.querySelector(`button[data-key = '${e.key}']`);
-  if (!keys) return;
-  console.log(keys);
-  populateDisplay(keys.textContent);
-});
+    const keys = document.querySelector(`button[data-key = '${e.key}']`);
+    if (!keys) return;
+    console.log(keys);
+    populateDisplay(keys.textContent);
+  });
+
+// Look for button click
+const buttons = document.querySelectorAll('.buttons');
+
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function() {
+    console.log(this.dataset.key);
+    populateDisplay(this.innerText);
+    });
+};
+
+
 
 
 
