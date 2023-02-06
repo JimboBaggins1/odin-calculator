@@ -1,0 +1,27 @@
+/* mystylesheet.css */
+#container {
+    position: relative;
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 25%;
+}
+
+#display {
+    border: 2px solid black;
+    min-width: 98.5%;
+    min-height: 20px;
+    margin: 2px 0.5px;
+}
+
+#zero {
+    min-width: 49%;
+}
+.buttons {
+    min-width: 24%;
+    border: 2px solid black;
+    margin: 2px 0.5px;
+}
