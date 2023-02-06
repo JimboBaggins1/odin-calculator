@@ -12,9 +12,12 @@
 
 #display {
     border: 2px solid black;
-    min-width: 98.5%;
+    min-width: 99%;
     min-height: 20px;
     margin: 2px 0.5px;
+    padding: 10px;
+    text-align: end;
+    box-sizing: border-box;
 }
 
 #zero {
