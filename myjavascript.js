@@ -56,8 +56,9 @@ const multiply = function (num1, num2) {
 const divide = function (num1, num2) {
   if (num2 === 0) {
     return 'Divide by zero error.. How embarrassing'
-  }
-  return num1 / num2;
+  } else {
+    return num1 / num2;
+  };
 };
 
 
