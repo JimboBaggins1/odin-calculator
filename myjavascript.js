@@ -2,11 +2,6 @@
 
 
 let displayValue = 0;
-let operand1 = 0;
-let operand2 = 0;
-let operator = function(num1,num2) {
-  return num1 + num2;
-};
 let storage1 = null;
 let storage2 = null;
 
@@ -59,12 +54,13 @@ const multiply = function (num1, num2) {
 
 // Divide
 const divide = function (num1, num2) {
+  if (num2 === 0) {
+    return 'Divide by zero error.. How embarrassing'
+  }
   return num1 / num2;
 };
 
-const clear = function (num1, num2) {
-  return 0;
-}
+
 
 //----------------------Operate-------------------------//
 
@@ -79,9 +75,9 @@ const isOperatorClicked = function (keys) {
   switch (keys) {
     case "+":
       if (storage1 === null) {
-        storage1 = display.textContent.replace(/\W|_/g, "");
+        storage1 = display.textContent.substring(0, display.textContent.length - 1);
       } else {
-        storage2 = display.textContent.replace(/\W|_/g, "");
+        storage2 = display.textContent.substring(0, display.textContent.length - 1);
         storage1 = operate(operator, Number(storage1), Number(storage2));
       }
       console.log(storage1);
@@ -91,9 +87,9 @@ const isOperatorClicked = function (keys) {
       break;
     case "-":
       if (storage1 === null) {
-        storage1 = display.textContent.replace(/\W|_/g, "");
+        storage1 = display.textContent.substring(0, display.textContent.length - 1);
       } else {
-        storage2 = display.textContent.replace(/\W|_/g, "");
+        storage2 = display.textContent.substring(0, display.textContent.length - 1);
         storage1 = operate(operator, Number(storage1), Number(storage2));
       }
       console.log(storage1);
@@ -103,9 +99,9 @@ const isOperatorClicked = function (keys) {
       break;
     case "*":
       if (storage1 === null) {
-        storage1 = display.textContent.replace(/\W|_/g, "");
+        storage1 = display.textContent.substring(0, display.textContent.length - 1);
       } else {
-        storage2 = display.textContent.replace(/\W|_/g, "");
+        storage2 = display.textContent.substring(0, display.textContent.length - 1);
         storage1 = operate(operator, Number(storage1), Number(storage2));
       }
       console.log(storage1);
@@ -115,9 +111,9 @@ const isOperatorClicked = function (keys) {
       break;
     case "/":
       if (storage1 === null) {
-        storage1 = display.textContent.replace(/\W|_/g, "");
+        storage1 = display.textContent.substring(0, display.textContent.length - 1);
       } else {
-        storage2 = display.textContent.replace(/\W|_/g, "");
+        storage2 = display.textContent.substring(0, display.textContent.length - 1);
         storage1 = operate(operator, Number(storage1), Number(storage2));
       }
       console.log(storage1);
@@ -125,8 +121,13 @@ const isOperatorClicked = function (keys) {
       operator = divide;
       display.textContent = "";
       break;
+    case "AC":
+      storage1 = null;
+      storage2 = null;
+      display.textContent = 0;
+      break;
     case "=":
-      storage2 = display.textContent.replace(/\W|_/g, "");
+      storage2 = display.textContent.substring(0, display.textContent.length - 1);
       storage1 = operate(operator, Number(storage1), Number(storage2));
       display.textContent = storage1;
       storage1 = null;
@@ -135,7 +136,11 @@ const isOperatorClicked = function (keys) {
 
 // Populate display
 const populateDisplay = function (keys) {
-  display.textContent += `${keys}`;
+  if (display.textContent === "0" || display.textContent === "Divide by zero error.. How embarrassing") {
+    display.textContent = `${keys}`;
+  } else {
+    display.textContent += `${keys}`;
+  }
   isOperatorClicked(keys);
 };
 
@@ -157,12 +162,3 @@ for (let i = 0; i < buttons.length; i++) {
     });
 };
 
-
-
-// take user input
-// if user presses operator key
-  // store display value in storage2
-  // perform first operation on storage1 and storage2
-  // store result in storage1
-  // store operator in operator storage
-  // clear display
